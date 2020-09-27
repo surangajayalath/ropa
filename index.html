@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="index.css">
+  </head>
+  <body>
+
+    <form class="form"  method="post" name="myform" onsubmit="return validation()">
+    <input type="text" id='name' placeholder="User Name" ><br>
+    <input type='text' id='txtEmail' placeholder="User Email"><br>
+    <input type="text" id="pass" placeholder="Password"><br>
+    <input type="text"  id="cpass" placeholder="Confirm Password"><br>
+    <input type='submit' name='submit' />
+
+    </form>
+
+    <script type="text/javascript">
+
+
+function validation() {
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('txtEmail');
+  var pass = document.getElementById('pass').value;
+  var cpass = document.getElementById('cpass').value;
+  var filter = /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+
+/*
+  if(name =='' ||email == ''||pass =='' ||cpass == ''){
+    alert('All required');
+    return false;
+  }
+*/
+  if (name == '') {
+    alert('Please Provide Your name..');
+    name.focus;
+    return false;
+    }
+  else if (!filter.test(email.value)) {
+    alert('Please provide a valid email address..');
+    email.focus;
+    return false;
+  }
+  else if(pass == '' && cpass == ''){
+  alert('Please Enter Password');
+  pass.focus;
+  return false;
+}
+else if(pass.length < 4){
+  alert("Password should at least four charactor");
+  return false;
+}
+  else if( pass !== cpass){
+  alert('Password does not match');
+  return false;
+}
+}
+
+</script>
+
+
+  </body>
+</html>
